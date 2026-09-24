@@ -23,21 +23,24 @@
             min-height: 100vh;
         }
 
-        /* --- DEFAULT UNTUK LAPTOP / DESKTOP --- */
-#welcome-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.4)), 
-                url('background-greeting.jpg') center/cover no-repeat;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+        /* --- WELCOME SCREEN STYLES --- */
+        #welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100dvh;
+            background: linear-gradient(rgba(10, 10, 10, 0.3), rgba(10, 10, 10, 0.3)), 
+                        url('background-greeting.jpg') center/cover no-repeat;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 15px 10px;
+            overflow: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
 
         .welcome-container {
             display: flex;
@@ -46,7 +49,6 @@
             gap: 20px;
             max-width: 1000px;
             width: 100%;
-            margin-bottom: 30px;
         }
 
         .welcome-side-img {
@@ -55,11 +57,6 @@
             max-height: 280px;
             object-fit: contain;
             filter: drop-shadow(0 0 12px rgba(255, 214, 0, 0.3));
-            transition: transform 0.3s;
-        }
-
-        .welcome-side-img:hover {
-            transform: scale(1.05);
         }
 
         .welcome-center-img {
@@ -88,12 +85,6 @@
     bottom: 120px; /* Jarak tombol dari tepi bawah layar */
 }
 
-        .btn-start-game:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 35px rgba(0, 230, 118, 0.9);
-            background: linear-gradient(135deg, #00c853, #0091ea);
-        }
-
         @keyframes pulse-glow {
             0% { box-shadow: 0 0 15px rgba(0, 230, 118, 0.4); }
             50% { box-shadow: 0 0 30px rgba(0, 230, 118, 0.8); }
@@ -106,7 +97,7 @@
             top: 0;
             left: 0;
             width: 100vw;
-            height: 100vh;
+            height: 100dvh;
             background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.85)), 
                         url('background-greeting.jpg') center/cover no-repeat;
             z-index: 9998;
@@ -134,7 +125,6 @@
             color: #00e676;
             margin-bottom: 20px;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .player-count-selector {
@@ -153,7 +143,6 @@
             font-weight: bold;
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.2s;
         }
 
         .btn-count.active {
@@ -180,11 +169,6 @@
             text-align: center;
         }
 
-        .setup-input-group input:focus {
-            outline: none;
-            border-color: #00e676;
-        }
-
         .btn-proceed {
             background: linear-gradient(135deg, #00e676, #00b0ff);
             color: #000;
@@ -195,14 +179,9 @@
             border-radius: 30px;
             cursor: pointer;
             width: 100%;
-            box-shadow: 0 0 15px rgba(0, 230, 118, 0.4);
         }
 
-        .btn-proceed:hover {
-            background: linear-gradient(135deg, #00c853, #0091ea);
-        }
-
-        /* Hidden State untuk Papan Skor Utama sebelum Start */
+        /* Hidden State untuk Papan Skor Utama */
         .main-content {
             display: none;
             opacity: 0;
@@ -214,7 +193,6 @@
             opacity: 1;
         }
 
-        /* Gambar kartu di sudut kiri atas dan kanan atas */
         body::before,
         body::after {
             content: "";
@@ -251,7 +229,6 @@
             align-items: center;
             justify-content: space-between;
             gap: 10px;
-            backdrop-filter: blur(4px);
         }
 
         .target-container label {
@@ -287,45 +264,23 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.6);
             display: flex;
             flex-direction: column;
-            backdrop-filter: blur(4px);
-            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .player-card.hidden {
             display: none !important;
         }
 
-        .player-card:hover {
-            transform: translateY(-3px);
-        }
+        .player-card.p1 { border: 2px solid #00e676; }
+        .player-card.p1 .score-display { color: #00e676; }
 
-        .player-card.p1 {
-            border: 2px solid #00e676;
-            box-shadow: 0 4px 15px rgba(0, 230, 118, 0.2);
-        }
-        .player-card.p1 .player-name:focus { border-color: #00e676; }
-        .player-card.p1 .score-display { color: #00e676; text-shadow: 0 0 10px rgba(0,230,118,0.4); }
+        .player-card.p2 { border: 2px solid #00e5ff; }
+        .player-card.p2 .score-display { color: #00e5ff; }
 
-        .player-card.p2 {
-            border: 2px solid #00e5ff;
-            box-shadow: 0 4px 15px rgba(0, 229, 255, 0.2);
-        }
-        .player-card.p2 .player-name:focus { border-color: #00e5ff; }
-        .player-card.p2 .score-display { color: #00e5ff; text-shadow: 0 0 10px rgba(0,229,255,0.4); }
+        .player-card.p3 { border: 2px solid #ffd600; }
+        .player-card.p3 .score-display { color: #ffd600; }
 
-        .player-card.p3 {
-            border: 2px solid #ffd600;
-            box-shadow: 0 4px 15px rgba(255, 214, 0, 0.2);
-        }
-        .player-card.p3 .player-name:focus { border-color: #ffd600; }
-        .player-card.p3 .score-display { color: #ffd600; text-shadow: 0 0 10px rgba(255,214,0,0.4); }
-
-        .player-card.p4 {
-            border: 2px solid #ff4081;
-            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.2);
-        }
-        .player-card.p4 .player-name:focus { border-color: #ff4081; }
-        .player-card.p4 .score-display { color: #ff4081; text-shadow: 0 0 10px rgba(255,64,129,0.4); }
+        .player-card.p4 { border: 2px solid #ff4081; }
+        .player-card.p4 .score-display { color: #ff4081; }
 
         .player-name {
             width: 100%;
@@ -356,11 +311,6 @@
             font-weight: bold;
             border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .btn-player-zero:hover {
-            background-color: #bf360c;
         }
 
         .score-display {
@@ -392,11 +342,6 @@
             font-weight: bold;
         }
 
-        .custom-input:focus {
-            outline: none;
-            border-color: #0288d1;
-        }
-
         .player-history {
             margin-top: auto;
             background-color: rgba(22, 22, 22, 0.9);
@@ -411,7 +356,6 @@
             color: #888;
             margin-bottom: 8px;
             text-transform: uppercase;
-            letter-spacing: 1px;
             border-bottom: 1px solid #2a2a2a;
             padding-bottom: 4px;
         }
@@ -432,11 +376,7 @@
             justify-content: space-between;
         }
 
-        .time {
-            color: #666;
-            font-size: 0.75rem;
-        }
-
+        .time { color: #666; font-size: 0.75rem; }
         .added { color: #81c784; }
         .subtracted { color: #e57373; }
         .reset-tag { color: #ff9800; font-weight: bold; }
@@ -445,7 +385,7 @@
             text-align: center;
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             margin-bottom: 30px;
             flex-wrap: wrap;
         }
@@ -458,52 +398,45 @@
             transition: opacity 0.2s, transform 0.1s;
         }
 
-        button:active {
-            transform: scale(0.95);
-        }
+        button:active { transform: scale(0.95); }
 
         .btn-submit-all {
             background-color: #00e676;
             color: #000;
-            padding: 12px 24px;
+            padding: 12px 20px;
             font-size: 1rem;
-            box-shadow: 0 0 10px rgba(0,230,118,0.4);
-        }
-
-        .btn-submit-all:hover {
-            background-color: #00c853;
         }
 
         .btn-undo {
             background-color: #0288d1;
             color: white;
-            padding: 12px 20px;
+            padding: 12px 18px;
             font-size: 1rem;
-        }
-
-        .btn-undo:hover {
-            background-color: #0277bd;
         }
 
         .btn-undo:disabled {
             background-color: #444;
             color: #888;
             cursor: not-allowed;
-            transform: none;
         }
 
         .btn-reset-all {
+            background-color: #e65100;
+            color: white;
+            padding: 12px 18px;
+            font-size: 1rem;
+        }
+
+        /* STYLE TOMBOL NEW GAME (RESET TOTAL & BALIK KE LAYAR AWAL) */
+        .btn-new-game {
             background-color: #d32f2f;
             color: white;
             padding: 12px 20px;
             font-size: 1rem;
+            box-shadow: 0 0 10px rgba(211, 47, 47, 0.5);
         }
 
-        .btn-reset-all:hover {
-            background-color: #b71c1c;
-        }
-
-        /* STYLE POPUP JUARA DENGAN GAMBAR KANAN KIRI */
+        /* MODAL POPUP JUARA */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -542,17 +475,9 @@
             object-fit: cover;
             border-radius: 8px;
             border: 2px solid #ffd600;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            flex-shrink: 0;
         }
 
-        .modal-gambler-img.right-img {
-            transform: scaleX(-1);
-        }
-
-        .modal-text-container {
-            flex-grow: 1;
-        }
+        .modal-gambler-img.right-img { transform: scaleX(-1); }
 
         .modal-title {
             color: #ffd600;
@@ -560,15 +485,12 @@
             font-weight: 800;
             margin-bottom: 12px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            line-height: 1.4;
         }
 
         .modal-subtitle {
             color: #ff5252;
             font-size: 0.95rem;
             font-weight: bold;
-            letter-spacing: 0.5px;
         }
 
         .modal-buttons {
@@ -578,35 +500,19 @@
             flex-wrap: wrap;
         }
 
-        .btn-modal-zero {
-            background-color: #d32f2f;
-            color: white;
-            padding: 10px 16px;
-        }
-
-        .btn-modal-keep {
-            background-color: #0288d1;
-            color: white;
-            padding: 10px 16px;
-        }
+        .btn-modal-zero { background-color: #d32f2f; color: white; padding: 10px 16px; }
+        .btn-modal-keep { background-color: #0288d1; color: white; padding: 10px 16px; }
 
         @media (max-width: 768px) {
-    body::before,
-    body::after {
-        width: 60px;
-        height: 60px;
-        opacity: 0.2;
-    }
-
-    /* --- KHUSUS TAMPILAN HP (MAX-WIDTH 768PX) --- */
-@media (max-width: 768px) {
-    #welcome-screen {
-        height: 100dvh;
-        /* Ganti ke file gambar khusus HP */
-        background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.4)), 
-                    url('background-greeting-mobile.jpg') center/cover no-repeat !important;
-    }
-}
+            #welcome-screen { height: 100dvh; background-size: 100% 100%; }
+            .welcome-container { flex-direction: column; gap: 10px; max-height: 65dvh; }
+            .welcome-side-img { max-height: 12dvh; width: auto; }
+            .welcome-center-img { max-height: 22dvh; max-width: 80vw; width: auto; }
+            .btn-start-game { padding: 12px 30px; font-size: 1rem; max-width: 260px; }
+            .modal-gambler-img { width: 50px; height: 70px; }
+            .modal-title { font-size: 0.85rem; }
+            .modal-subtitle { font-size: 0.7rem; }
+        }
     </style>
 </head>
 <body>
@@ -641,103 +547,42 @@
     <div class="main-content" id="main-content">
         <h1>ENJOY THE GAME WITH DRUM</h1>
 
-        <!-- Input Batas Akhir Nilai / Winning Score -->
         <div class="target-container">
             <label for="target-score">🏆 Target Nilai (Batas Akhir):</label>
-            <input type="number" id="target-score" class="target-input" value="100" min="1">
+            <input type="number" id="target-score" class="target-input" value="100" min="1" onchange="saveGameState()">
         </div>
 
         <div class="scoreboard-grid" id="scoreboard-grid">
-            <!-- Pemain 1 -->
-            <div class="player-card p1" id="card-1">
-                <input type="text" class="player-name" id="name-1" value="Pemain 1">
-                
-                <div class="reset-top-container">
-                    <button class="btn-player-zero" onclick="setPlayerScoreToZero(1)">Skor 0</button>
-                </div>
-                
-                <div class="score-display" id="score-1">0</div>
-                
-                <div class="input-group">
-                    <label for="input-1">Tambah/Kurang Skor:</label>
-                    <input type="number" id="input-1" class="custom-input" placeholder="0">
-                </div>
-
-                <div class="player-history">
-                    <h3>Histori Skor</h3>
-                    <ul class="player-history-list" id="history-1"></ul>
-                </div>
-            </div>
-
-            <!-- Pemain 2 -->
-            <div class="player-card p2" id="card-2">
-                <input type="text" class="player-name" id="name-2" value="Pemain 2">
-                
-                <div class="reset-top-container">
-                    <button class="btn-player-zero" onclick="setPlayerScoreToZero(2)">Skor 0</button>
-                </div>
-                
-                <div class="score-display" id="score-2">0</div>
-                
-                <div class="input-group">
-                    <label for="input-2">Tambah/Kurang Skor:</label>
-                    <input type="number" id="input-2" class="custom-input" placeholder="0">
-                </div>
-
-                <div class="player-history">
-                    <h3>Histori Skor</h3>
-                    <ul class="player-history-list" id="history-2"></ul>
-                </div>
-            </div>
-
-            <!-- Pemain 3 -->
-            <div class="player-card p3" id="card-3">
-                <input type="text" class="player-name" id="name-3" value="Pemain 3">
-                
-                <div class="reset-top-container">
-                    <button class="btn-player-zero" onclick="setPlayerScoreToZero(3)">Skor 0</button>
-                </div>
-                
-                <div class="score-display" id="score-3">0</div>
-                
-                <div class="input-group">
-                    <label for="input-3">Tambah/Kurang Skor:</label>
-                    <input type="number" id="input-3" class="custom-input" placeholder="0">
-                </div>
-
-                <div class="player-history">
-                    <h3>Histori Skor</h3>
-                    <ul class="player-history-list" id="history-3"></ul>
-                </div>
-            </div>
-
-            <!-- Pemain 4 -->
-            <div class="player-card p4" id="card-4">
-                <input type="text" class="player-name" id="name-4" value="Pemain 4">
-                
-                <div class="reset-top-container">
-                    <button class="btn-player-zero" onclick="setPlayerScoreToZero(4)">Skor 0</button>
-                </div>
-                
-                <div class="score-display" id="score-4">0</div>
-                
-                <div class="input-group">
-                    <label for="input-4">Tambah/Kurang Skor:</label>
-                    <input type="number" id="input-4" class="custom-input" placeholder="0">
-                </div>
-
-                <div class="player-history">
-                    <h3>Histori Skor</h3>
-                    <ul class="player-history-list" id="history-4"></ul>
-                </div>
-            </div>
+            <!-- Pemain 1 sampai 4 -->
+            <script>
+                for(let i=1; i<=4; i++) {
+                    document.write(`
+                        <div class="player-card p${i}" id="card-${i}">
+                            <input type="text" class="player-name" id="name-${i}" value="Pemain ${i}" onchange="saveGameState()">
+                            <div class="reset-top-container">
+                                <button class="btn-player-zero" onclick="setPlayerScoreToZero(${i})">Skor 0</button>
+                            </div>
+                            <div class="score-display" id="score-${i}">0</div>
+                            <div class="input-group">
+                                <label for="input-${i}">Tambah/Kurang Skor:</label>
+                                <input type="number" id="input-${i}" class="custom-input" placeholder="0">
+                            </div>
+                            <div class="player-history">
+                                <h3>Histori Skor</h3>
+                                <ul class="player-history-list" id="history-${i}"></ul>
+                            </div>
+                        </div>
+                    `);
+                }
+            </script>
         </div>
 
         <!-- Tombol Kontrol Utama -->
         <div class="global-controls">
             <button class="btn-submit-all" onclick="submitAllScores()">Proses / Submit Skor Semua Pemain</button>
             <button class="btn-undo" id="btn-undo" onclick="undoLastAction()" disabled>↩️ Undo</button>
-            <button class="btn-reset-all" onclick="resetAllScores()">Reset Semua Game</button>
+            <button class="btn-reset-all" onclick="resetAllScores()">Reset Skor Game Ini</button>
+            <button class="btn-new-game" onclick="startNewGame()">🆕 New Game</button>
         </div>
     </div>
 
@@ -745,20 +590,15 @@
     <div class="modal-overlay" id="winner-modal">
         <div class="modal-box">
             <div class="modal-content-wrapper">
-                <img src="kingofgambler.jpg" alt="King of Gambler" class="modal-gambler-img">
-                
+                <img src="king of gambler.jpg" alt="King of Gambler" class="modal-gambler-img">
                 <div class="modal-text-container">
                     <div class="modal-title" id="modal-title">
-                        SELAMAT KEPADA <span id="winner-name-span">PEMAIN</span> MENJADI JUARA JUDI DUNIA
+                        👑 SELAMAT KEPADA <span id="winner-name-span">PEMAIN</span> MENJADI JUARA JUDI DUNIA
                     </div>
-                    <div class="modal-subtitle">
-                        -- SEGERA BAYAR UANG KOPI ANDA --
-                    </div>
+                    <div class="modal-subtitle">-- SEGERA BAYAR UANG KOPI ANDA --</div>
                 </div>
-
-                <img src="kingofgambler.jpg" alt="King of Gambler" class="modal-gambler-img right-img">
+                <img src="king of gambler.jpg" alt="King of Gambler" class="modal-gambler-img right-img">
             </div>
-
             <div class="modal-buttons">
                 <button class="btn-modal-zero" id="btn-zero">Atur Nilai Semua Lawan ke 0</button>
                 <button class="btn-modal-keep" id="btn-keep">Biarkan Nilai Lawan Tetap</button>
@@ -768,11 +608,87 @@
 
     <script>
         let scores = { 1: 0, 2: 0, 3: 0, 4: 0 };
-        const historyStack = [];
+        let historyStack = [];
         let currentWinner = null;
         let totalPlayers = 4;
+        let currentScreen = 'welcome'; // 'welcome', 'setup', 'main'
 
+        // --- MANAJEMEN AUTO-SAVE (LOCALSTORAGE) ---
+        function saveGameState() {
+            const historyHTML = {};
+            const playerNames = {};
+            for (let i = 1; i <= 4; i++) {
+                historyHTML[i] = document.getElementById(`history-${i}`).innerHTML;
+                playerNames[i] = document.getElementById(`name-${i}`).value;
+            }
+
+            const gameState = {
+                scores: scores,
+                totalPlayers: totalPlayers,
+                targetScore: document.getElementById('target-score').value,
+                historyHTML: historyHTML,
+                playerNames: playerNames,
+                historyStack: historyStack,
+                currentScreen: currentScreen
+            };
+
+            localStorage.setItem('scoreboard_game_data', JSON.stringify(gameState));
+        }
+
+        function loadGameState() {
+            const savedData = localStorage.getItem('scoreboard_game_data');
+            if (!savedData) return;
+
+            try {
+                const gameState = JSON.parse(savedData);
+                scores = gameState.scores || { 1: 0, 2: 0, 3: 0, 4: 0 };
+                totalPlayers = gameState.totalPlayers || 4;
+                historyStack = gameState.historyStack || [];
+                currentScreen = gameState.currentScreen || 'welcome';
+
+                document.getElementById('target-score').value = gameState.targetScore || 100;
+
+                // Load Nama & Histori
+                for (let i = 1; i <= 4; i++) {
+                    if (gameState.playerNames && gameState.playerNames[i]) {
+                        document.getElementById(`name-${i}`).value = gameState.playerNames[i];
+                    }
+                    if (gameState.historyHTML && gameState.historyHTML[i]) {
+                        document.getElementById(`history-${i}`).innerHTML = gameState.historyHTML[i];
+                    }
+                }
+
+                // Tampilkan screen sesuai kondisi terakhir saat di-refresh
+                if (currentScreen === 'main') {
+                    document.getElementById('welcome-screen').style.display = 'none';
+                    document.getElementById('player-setup-screen').style.display = 'none';
+                    document.getElementById('main-content').classList.add('active');
+                    
+                    for (let i = 1; i <= 4; i++) {
+                        const card = document.getElementById(`card-${i}`);
+                        if (i <= totalPlayers) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                    updateScoreDisplays();
+                    updateUndoButtonState();
+                } else if (currentScreen === 'setup') {
+                    document.getElementById('welcome-screen').style.display = 'none';
+                    document.getElementById('player-setup-screen').style.display = 'flex';
+                    document.getElementById('player-setup-screen').style.opacity = '1';
+                }
+            } catch (e) {
+                console.error("Gagal memuat data game yang tersimpan", e);
+            }
+        }
+
+        // --- SISTEM TAMPILAN SCREEN ---
         function showPlayerSetup() {
+            currentScreen = 'setup';
+            saveGameState();
+
             const welcomeScreen = document.getElementById('welcome-screen');
             const setupScreen = document.getElementById('player-setup-screen');
 
@@ -790,14 +706,12 @@
             document.getElementById('btn-count-4').classList.toggle('active', count === 4);
 
             const input4 = document.getElementById('setup-name-4');
-            if (count === 3) {
-                input4.style.display = 'none';
-            } else {
-                input4.style.display = 'block';
-            }
+            input4.style.display = (count === 3) ? 'none' : 'block';
         }
 
         function confirmAndStartGame() {
+            currentScreen = 'main';
+
             for (let i = 1; i <= totalPlayers; i++) {
                 const setupName = document.getElementById(`setup-name-${i}`).value.trim();
                 if (setupName !== '') {
@@ -814,6 +728,8 @@
                 }
             }
 
+            saveGameState();
+
             const setupScreen = document.getElementById('player-setup-screen');
             const mainContent = document.getElementById('main-content');
 
@@ -825,20 +741,17 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('btn-zero').addEventListener('click', () => {
-                handleWinnerDecision(true);
-            });
+            loadGameState();
 
-            document.getElementById('btn-keep').addEventListener('click', () => {
-                handleWinnerDecision(false);
-            });
+            document.getElementById('btn-zero').addEventListener('click', () => handleWinnerDecision(true));
+            document.getElementById('btn-keep').addEventListener('click', () => handleWinnerDecision(false));
         });
 
         function closeModal() {
             document.getElementById('winner-modal').style.display = 'none';
         }
 
-        function saveState() {
+        function saveStateForUndo() {
             const historyHTML = {};
             for (let i = 1; i <= totalPlayers; i++) {
                 historyHTML[i] = document.getElementById(`history-${i}`).innerHTML;
@@ -866,6 +779,7 @@
 
             updateScoreDisplays();
             updateUndoButtonState();
+            saveGameState();
         }
 
         function updateUndoButtonState() {
@@ -885,7 +799,7 @@
 
             if (Object.keys(changes).length === 0) return;
 
-            saveState();
+            saveStateForUndo();
 
             for (const pId in changes) {
                 const playerNum = parseInt(pId);
@@ -897,6 +811,7 @@
             }
 
             updateScoreDisplays();
+            saveGameState();
             checkWinner();
         }
 
@@ -917,13 +832,12 @@
 
         function handleWinnerDecision(shouldResetOpponents) {
             closeModal();
-
             if (!currentWinner) return;
 
             const winnerName = document.getElementById(`name-${currentWinner}`).value || `Pemain ${currentWinner}`;
 
             if (shouldResetOpponents) {
-                saveState();
+                saveStateForUndo();
                 for (let i = 1; i <= totalPlayers; i++) {
                     if (i !== currentWinner) {
                         scores[i] = 0;
@@ -931,6 +845,7 @@
                     }
                 }
                 updateScoreDisplays();
+                saveGameState();
             }
 
             currentWinner = null;
@@ -939,11 +854,12 @@
         function setPlayerScoreToZero(playerNum) {
             const playerName = document.getElementById(`name-${playerNum}`).value || `Pemain ${playerNum}`;
             if (confirm(`Apakah Anda yakin ingin mengatur skor ${playerName} menjadi 0?`)) {
-                saveState();
+                saveStateForUndo();
                 scores[playerNum] = 0;
                 document.getElementById(`input-${playerNum}`).value = '';
                 addPlayerHistory(playerNum, 'Set Skor Ke 0', 0, true);
                 updateScoreDisplays();
+                saveGameState();
             }
         }
 
@@ -981,14 +897,23 @@
         }
 
         function resetAllScores() {
-            if (confirm("Apakah Anda yakin ingin mereset SEMUA skor pemain dan histori?")) {
-                saveState();
+            if (confirm("Apakah Anda yakin ingin mereset SEMUA skor pemain dan histori pada permainan saat ini?")) {
+                saveStateForUndo();
                 for (let i = 1; i <= totalPlayers; i++) {
                     scores[i] = 0;
                     document.getElementById(`input-${i}`).value = '';
                     document.getElementById(`history-${i}`).innerHTML = '';
                 }
                 updateScoreDisplays();
+                saveGameState();
+            }
+        }
+
+        /* TOMBOL NEW GAME (HAPUS DATA & KEMBALI KE WELCOME SCREEN) */
+        function startNewGame() {
+            if (confirm("Apakah Anda yakin ingin memulai NEW GAME? Semua data permainan dan nama pemain akan dihapus total.")) {
+                localStorage.removeItem('scoreboard_game_data');
+                location.reload(); // Reload halaman kembali ke awal
             }
         }
     </script>
