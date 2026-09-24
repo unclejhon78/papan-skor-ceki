@@ -23,23 +23,21 @@
             min-height: 100vh;
         }
 
-        /* --- WELCOME SCREEN STYLES --- */
-        #welcome-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(rgba(10, 10, 10, 0.1), rgba(10, 10, 10, 0.5)), 
-                        url('background-greeting.jpg') center/cover no-repeat;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
+        /* --- DEFAULT UNTUK LAPTOP / DESKTOP --- */
+#welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.4)), 
+                url('background-greeting.jpg') center/cover no-repeat;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
         .welcome-container {
             display: flex;
@@ -600,81 +598,13 @@
         opacity: 0.2;
     }
 
-    /* WELCOME SCREEN FIT LAYAR HP */
+    /* --- KHUSUS TAMPILAN HP (MAX-WIDTH 768PX) --- */
+@media (max-width: 768px) {
     #welcome-screen {
-        height: 100vh;
-        width: 100vw;
-        padding: 15px 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly; /* Membagi ruang atas, tengah, bawah secara seimbang */
-        align-items: center;
-        overflow: hidden; /* Mencegah scrollbar muncul */
-    }
-
-    .welcome-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        margin-bottom: 0;
-        max-height: 70vh; /* Maksimal mengambil 70% tinggi layar */
-    }
-
-    /* Gambar Samping (Joker & Kartu Fans) dibuat mengecil dan sejajar/proporsional */
-    .welcome-side-img {
-        width: auto;
-        max-height: 15vh; /* Maksimal 15% dari tinggi layar HP */
-        object-fit: contain;
-    }
-
-    /* Gambar Utama (WELCOME GAME) */
-    .welcome-center-img {
-        width: auto;
-        max-height: 25vh; /* Maksimal 25% dari tinggi layar HP */
-        max-width: 85vw;  /* Maksimal 85% dari lebar layar HP */
-        object-fit: contain;
-    }
-
-    /* TOMBOL START THE GAME */
-    .btn-start-game {
-        padding: 12px 30px;
-        font-size: 1rem;
-        margin-top: 0;
-        width: 80%; /* Agar proporsional di layar HP */
-        max-width: 280px;
-        text-align: center;
-        box-shadow: 0 0 15px rgba(0, 230, 118, 0.5);
-    }
-
-    /* SETUP PLAYER SCREEN FIT HP */
-    .setup-card {
-        padding: 20px 15px;
-        max-width: 90vw;
-    }
-
-    .setup-input-group input {
-        padding: 8px;
-        font-size: 0.9rem;
-    }
-
-    /* POPUP JUARA FIT HP */
-    .modal-box {
-        padding: 15px;
-    }
-
-    .modal-gambler-img {
-        width: 50px;
-        height: 70px;
-    }
-
-    .modal-title {
-        font-size: 0.85rem;
-    }
-
-    .modal-subtitle {
-        font-size: 0.7rem;
+        height: 100dvh;
+        /* Ganti ke file gambar khusus HP */
+        background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.4)), 
+                    url('background-greeting-mobile.jpg') center/cover no-repeat !important;
     }
 }
     </style>
