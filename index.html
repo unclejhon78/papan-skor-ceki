@@ -595,55 +595,86 @@
         @media (max-width: 768px) {
     body::before,
     body::after {
-        width: 70px;
-        height: 70px;
+        width: 60px;
+        height: 60px;
+        opacity: 0.2;
     }
 
-    /* Penyesuaian Welcome Screen Layar HP */
+    /* WELCOME SCREEN FIT LAYAR HP */
     #welcome-screen {
-        padding: 15px 10px;
-        justify-content: center; /* Menjaga posisi di tengah vertikal */
         height: 100vh;
-        overflow-y: auto; /* Mengantisipasi layar HP yang sangat pendek */
+        width: 100vw;
+        padding: 15px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly; /* Membagi ruang atas, tengah, bawah secara seimbang */
+        align-items: center;
+        overflow: hidden; /* Mencegah scrollbar muncul */
     }
 
     .welcome-container {
+        display: flex;
         flex-direction: column;
-        gap: 10px;
-        margin-bottom: 15px;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 0;
+        max-height: 70vh; /* Maksimal mengambil 70% tinggi layar */
     }
 
-    /* Ukuran Gambar Samping (Joker & Kartu Fans) */
+    /* Gambar Samping (Joker & Kartu Fans) dibuat mengecil dan sejajar/proporsional */
     .welcome-side-img {
-        width: 80px;  /* Dikecilkan agar muat di HP */
-        max-height: 120px;
+        width: auto;
+        max-height: 15vh; /* Maksimal 15% dari tinggi layar HP */
+        object-fit: contain;
     }
 
-    /* Ukuran Gambar Utama (WELCOME TO THE GAME) */
+    /* Gambar Utama (WELCOME GAME) */
     .welcome-center-img {
-        max-width: 230px; /* Dikecilkan agar tidak makan tempat */
-        height: auto;
+        width: auto;
+        max-height: 25vh; /* Maksimal 25% dari tinggi layar HP */
+        max-width: 85vw;  /* Maksimal 85% dari lebar layar HP */
+        object-fit: contain;
     }
 
-    /* Ukuran & Margin Tombol */
+    /* TOMBOL START THE GAME */
     .btn-start-game {
-        padding: 12px 28px;
+        padding: 12px 30px;
         font-size: 1rem;
-        margin-top: 10px; /* Jarak aman tombol di bawah gambar */
+        margin-top: 0;
+        width: 80%; /* Agar proporsional di layar HP */
+        max-width: 280px;
+        text-align: center;
+        box-shadow: 0 0 15px rgba(0, 230, 118, 0.5);
     }
 
-    /* Pop-up Juara HP */
+    /* SETUP PLAYER SCREEN FIT HP */
+    .setup-card {
+        padding: 20px 15px;
+        max-width: 90vw;
+    }
+
+    .setup-input-group input {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    /* POPUP JUARA FIT HP */
+    .modal-box {
+        padding: 15px;
+    }
+
     .modal-gambler-img {
-        width: 60px;
-        height: 80px;
+        width: 50px;
+        height: 70px;
     }
 
     .modal-title {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
     }
 
     .modal-subtitle {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
 }
     </style>
