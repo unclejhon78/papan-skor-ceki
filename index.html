@@ -593,43 +593,59 @@
         }
 
         @media (max-width: 768px) {
-            body::before,
-            body::after {
-                width: 80px;
-                height: 80px;
-            }
+    body::before,
+    body::after {
+        width: 70px;
+        height: 70px;
+    }
 
-            .welcome-container {
-                flex-direction: column;
-                gap: 15px;
-            }
+    /* Penyesuaian Welcome Screen Layar HP */
+    #welcome-screen {
+        padding: 15px 10px;
+        justify-content: center; /* Menjaga posisi di tengah vertikal */
+        height: 100vh;
+        overflow-y: auto; /* Mengantisipasi layar HP yang sangat pendek */
+    }
 
-            .welcome-side-img {
-                width: 110px;
-            }
+    .welcome-container {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
 
-            .welcome-center-img {
-                max-width: 280px;
-            }
+    /* Ukuran Gambar Samping (Joker & Kartu Fans) */
+    .welcome-side-img {
+        width: 80px;  /* Dikecilkan agar muat di HP */
+        max-height: 120px;
+    }
 
-            .btn-start-game {
-                padding: 12px 30px;
-                font-size: 1.1rem;
-            }
+    /* Ukuran Gambar Utama (WELCOME TO THE GAME) */
+    .welcome-center-img {
+        max-width: 230px; /* Dikecilkan agar tidak makan tempat */
+        height: auto;
+    }
 
-            .modal-gambler-img {
-                width: 70px;
-                height: 95px;
-            }
+    /* Ukuran & Margin Tombol */
+    .btn-start-game {
+        padding: 12px 28px;
+        font-size: 1rem;
+        margin-top: 10px; /* Jarak aman tombol di bawah gambar */
+    }
 
-            .modal-title {
-                font-size: 1rem;
-            }
+    /* Pop-up Juara HP */
+    .modal-gambler-img {
+        width: 60px;
+        height: 80px;
+    }
 
-            .modal-subtitle {
-                font-size: 0.8rem;
-            }
-        }
+    .modal-title {
+        font-size: 0.95rem;
+    }
+
+    .modal-subtitle {
+        font-size: 0.75rem;
+    }
+}
     </style>
 </head>
 <body>
