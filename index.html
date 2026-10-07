@@ -17,10 +17,41 @@
                         url('background-greeting.jpg') center/cover no-repeat fixed;
             color: #ffffff;
             padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 100%;
             position: relative;
             min-height: 100vh;
+        }
+
+        /* --- TOMBOL FULLSCREEN DI KIRI ATAS --- */
+        .top-left-controls {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .btn-fullscreen {
+            background-color: #7b1fa2;
+            color: white;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            box-shadow: 0 0 10px rgba(123, 31, 162, 0.5);
+        }
+
+        .btn-fullscreen:hover {
+            background-color: #6a1b9a;
+        }
+
+        /* --- TOMBOL KONTROL DI SAMPING KANAN ATAS --- */
+        .top-right-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
         /* --- DEFAULT UNTUK LAPTOP / DESKTOP --- */
@@ -39,37 +70,6 @@
             align-items: center;
         }
 
-        .welcome-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            max-width: 1000px;
-            width: 100%;
-            margin-bottom: 30px;
-        }
-
-        .welcome-side-img {
-            width: 180px;
-            height: auto;
-            max-height: 280px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 12px rgba(255, 214, 0, 0.3));
-            transition: transform 0.3s;
-        }
-
-        .welcome-side-img:hover {
-            transform: scale(1.05);
-        }
-
-        .welcome-center-img {
-            width: 100%;
-            max-width: 450px;
-            height: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 0 20px rgba(0, 230, 118, 0.4));
-        }
-
         .btn-start-game {
             background: linear-gradient(135deg, #00e676, #00b0ff);
             color: #000;
@@ -85,7 +85,7 @@
             transition: all 0.3s ease;
             animation: pulse-glow 2s infinite;
             position: absolute;
-            bottom: 120px; /* Jarak tombol dari tepi bawah layar */
+            bottom: 120px;
         }
 
         .btn-start-game:hover {
@@ -207,6 +207,9 @@
             display: none;
             opacity: 0;
             transition: opacity 0.5s ease;
+            position: relative;
+            width: 100%;
+            min-height: calc(100vh - 40px);
         }
 
         .main-content.active {
@@ -234,6 +237,7 @@
         h1 {
             text-align: center;
             margin-bottom: 15px;
+            margin-top: 10px;
             color: #00e676;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -277,6 +281,7 @@
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
             margin-bottom: 25px;
+            width: 100%;
         }
 
         .player-card {
@@ -288,7 +293,7 @@
             display: flex;
             flex-direction: column;
             backdrop-filter: blur(4px);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s, order 0.3s ease;
         }
 
         .player-card.hidden {
@@ -344,6 +349,7 @@
         .reset-top-container {
             display: flex;
             justify-content: center;
+            gap: 8px;
             margin-bottom: 4px;
         }
 
@@ -361,6 +367,22 @@
 
         .btn-player-zero:hover {
             background-color: #bf360c;
+        }
+
+        .btn-player-minus50 {
+            background-color: #c62828;
+            color: #fff;
+            border: none;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-player-minus50:hover {
+            background-color: #8e0000;
         }
 
         .score-display {
@@ -465,9 +487,9 @@
         .btn-submit-all {
             background-color: #00e676;
             color: #000;
-            padding: 12px 24px;
-            font-size: 1rem;
-            box-shadow: 0 0 10px rgba(0,230,118,0.4);
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            box-shadow: 0 0 15px rgba(0,230,118,0.4);
         }
 
         .btn-submit-all:hover {
@@ -477,8 +499,8 @@
         .btn-undo {
             background-color: #0288d1;
             color: white;
-            padding: 12px 20px;
-            font-size: 1rem;
+            padding: 8px 16px;
+            font-size: 0.9rem;
         }
 
         .btn-undo:hover {
@@ -495,8 +517,8 @@
         .btn-reset-all {
             background-color: #e65100;
             color: white;
-            padding: 12px 20px;
-            font-size: 1rem;
+            padding: 8px 16px;
+            font-size: 0.9rem;
         }
 
         .btn-reset-all:hover {
@@ -506,8 +528,8 @@
         .btn-new-game {
             background-color: #d32f2f;
             color: white;
-            padding: 12px 20px;
-            font-size: 1rem;
+            padding: 8px 16px;
+            font-size: 0.9rem;
             box-shadow: 0 0 10px rgba(211, 47, 47, 0.5);
         }
 
@@ -515,7 +537,7 @@
             background-color: #b71c1c;
         }
 
-        /* STYLE POPUP JUARA DENGAN GAMBAR KANAN KIRI */
+        /* STYLE POPUP JUARA & SKOR TERLEWATI */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -602,6 +624,13 @@
             padding: 10px 16px;
         }
 
+        .btn-modal-close {
+            background-color: #00e676;
+            color: #000;
+            padding: 10px 24px;
+            font-weight: bold;
+        }
+
         @media (max-width: 768px) {
             body::before,
             body::after {
@@ -612,9 +641,17 @@
 
             #welcome-screen {
                 height: 100dvh;
-                /* Ganti ke file gambar khusus HP */
                 background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.4)), 
                             url('background-greeting-mobile.jpg') center/cover no-repeat !important;
+            }
+
+            .top-left-controls, .top-right-controls {
+                position: relative;
+                top: 0;
+                left: 0;
+                right: 0;
+                justify-content: center;
+                margin-bottom: 10px;
             }
         }
     </style>
@@ -629,31 +666,43 @@
     <!-- HALAMAN SETUP INPUT PEMAIN -->
     <div id="player-setup-screen">
         <div class="setup-card">
-            <h2>Pengaturan Pemain</h2>
-            <p style="margin-bottom: 15px; color: #aaa; font-size: 0.9rem;">Pilih Jumlah Pemain:</p>
+            <h2>Input Player Name</h2>
+            <p style="margin-bottom: 15px; color: #aaa; font-size: 0.9rem;">Choose Total Player:</p>
             <div class="player-count-selector">
-                <button class="btn-count" id="btn-count-3" onclick="selectPlayerCount(3)">3 Pemain</button>
-                <button class="btn-count active" id="btn-count-4" onclick="selectPlayerCount(4)">4 Pemain</button>
+                <button class="btn-count" id="btn-count-3" onclick="selectPlayerCount(3)">3 Players</button>
+                <button class="btn-count active" id="btn-count-4" onclick="selectPlayerCount(4)">4 Players</button>
             </div>
 
             <div class="setup-input-group">
-                <input type="text" id="setup-name-1" placeholder="Nama Pemain 1" value="Pemain 1">
-                <input type="text" id="setup-name-2" placeholder="Nama Pemain 2" value="Pemain 2">
-                <input type="text" id="setup-name-3" placeholder="Nama Pemain 3" value="Pemain 3">
-                <input type="text" id="setup-name-4" placeholder="Nama Pemain 4" value="Pemain 4">
+                <input type="text" id="setup-name-1" placeholder="Input Player 1" value="Input Name Player 1">
+                <input type="text" id="setup-name-2" placeholder="Input Player 2" value="Input Name Player 2">
+                <input type="text" id="setup-name-3" placeholder="Input Player 3" value="Input Name Player 3">
+                <input type="text" id="setup-name-4" placeholder="Input Player 4" value="Input Name Player 4">
             </div>
 
-            <button class="btn-proceed" onclick="confirmAndStartGame()">Masuk Ke Papan Skor ➔</button>
+            <button class="btn-proceed" onclick="confirmAndStartGame()">Lets Rock ➔</button>
         </div>
     </div>
 
     <!-- UTAMA: PAPAN SKOR PERMAINAN -->
     <div class="main-content" id="main-content">
-        <h1>ENJOY THE GAME WITH DRUM</h1>
+        <!-- TOMBOL FULLSCREEN DI KIRI ATAS -->
+        <div class="top-left-controls">
+            <button class="btn-fullscreen" onclick="toggleFullScreen()">📺 Fullscreen</button>
+        </div>
+
+        <!-- TOMBOL CONTROL DI KANAN ATAS -->
+        <div class="top-right-controls">
+            <button class="btn-undo" id="btn-undo" onclick="undoLastAction()" disabled>↩️ Undo</button>
+            <button class="btn-reset-all" onclick="resetAllScores()">Reset Skor</button>
+            <button class="btn-new-game" onclick="startNewGame()">🆕 New Game</button>
+        </div>
+
+        <h1>ENJOY THE GAME</h1>
 
         <!-- Input Batas Akhir Nilai / Winning Score -->
         <div class="target-container">
-            <label for="target-score">🏆 Target Nilai (Batas Akhir):</label>
+            <label for="target-score">🏆 Score Target:</label>
             <input type="number" id="target-score" class="target-input" value="100" min="1" onchange="saveGameState()">
         </div>
 
@@ -664,17 +713,18 @@
                 
                 <div class="reset-top-container">
                     <button class="btn-player-zero" onclick="setPlayerScoreToZero(1)">Skor 0</button>
+                    <button class="btn-player-minus50" onclick="subtractFifty(1)">-50</button>
                 </div>
                 
                 <div class="score-display" id="score-1">0</div>
                 
                 <div class="input-group">
-                    <label for="input-1">Tambah/Kurang Skor:</label>
+                    <label for="input-1">Input Score Here</label>
                     <input type="number" id="input-1" class="custom-input" placeholder="0">
                 </div>
 
                 <div class="player-history">
-                    <h3>Histori Skor</h3>
+                    <h3>Score History</h3>
                     <ul class="player-history-list" id="history-1"></ul>
                 </div>
             </div>
@@ -685,17 +735,18 @@
                 
                 <div class="reset-top-container">
                     <button class="btn-player-zero" onclick="setPlayerScoreToZero(2)">Skor 0</button>
+                    <button class="btn-player-minus50" onclick="subtractFifty(2)">-50</button>
                 </div>
                 
                 <div class="score-display" id="score-2">0</div>
                 
                 <div class="input-group">
-                    <label for="input-2">Tambah/Kurang Skor:</label>
+                    <label for="input-2">Input Score Here</label>
                     <input type="number" id="input-2" class="custom-input" placeholder="0">
                 </div>
 
                 <div class="player-history">
-                    <h3>Histori Skor</h3>
+                    <h3>Score History</h3>
                     <ul class="player-history-list" id="history-2"></ul>
                 </div>
             </div>
@@ -706,17 +757,18 @@
                 
                 <div class="reset-top-container">
                     <button class="btn-player-zero" onclick="setPlayerScoreToZero(3)">Skor 0</button>
+                    <button class="btn-player-minus50" onclick="subtractFifty(3)">-50</button>
                 </div>
                 
                 <div class="score-display" id="score-3">0</div>
                 
                 <div class="input-group">
-                    <label for="input-3">Tambah/Kurang Skor:</label>
+                    <label for="input-3">Input Score Here</label>
                     <input type="number" id="input-3" class="custom-input" placeholder="0">
                 </div>
 
                 <div class="player-history">
-                    <h3>Histori Skor</h3>
+                    <h3>Score History</h3>
                     <ul class="player-history-list" id="history-3"></ul>
                 </div>
             </div>
@@ -727,28 +779,26 @@
                 
                 <div class="reset-top-container">
                     <button class="btn-player-zero" onclick="setPlayerScoreToZero(4)">Skor 0</button>
+                    <button class="btn-player-minus50" onclick="subtractFifty(4)">-50</button>
                 </div>
                 
                 <div class="score-display" id="score-4">0</div>
                 
                 <div class="input-group">
-                    <label for="input-4">Tambah/Kurang Skor:</label>
+                    <label for="input-4">Input Score Here</label>
                     <input type="number" id="input-4" class="custom-input" placeholder="0">
                 </div>
 
                 <div class="player-history">
-                    <h3>Histori Skor</h3>
+                    <h3>Score History</h3>
                     <ul class="player-history-list" id="history-4"></ul>
                 </div>
             </div>
         </div>
 
-        <!-- Tombol Kontrol Utama -->
+        <!-- Tombol Utama di Tengah Bawah -->
         <div class="global-controls">
-            <button class="btn-submit-all" onclick="submitAllScores()">Proses / Submit Skor Semua Pemain</button>
-            <button class="btn-undo" id="btn-undo" onclick="undoLastAction()" disabled>↩️ Undo</button>
-            <button class="btn-reset-all" onclick="resetAllScores()">Reset Skor Game Ini</button>
-            <button class="btn-new-game" onclick="startNewGame()">🆕 New Game</button>
+            <button class="btn-submit-all" onclick="submitAllScores()">SUBMIT SCORE</button>
         </div>
     </div>
 
@@ -777,12 +827,40 @@
         </div>
     </div>
 
+    <!-- MODAL POPUP SKOR TERLEWATI -->
+    <div class="modal-overlay" id="skipped-score-modal">
+        <div class="modal-box" style="border-color: #ff5252;">
+            <div class="modal-title" style="color: #ff5252; font-size: 1.4rem;">
+                ⚠️ SKOR LAWAN TERLEWATI ⚠️
+            </div>
+            <div class="modal-subtitle" id="skipped-score-message" style="color: #fff; font-size: 1.1rem; margin: 15px 0 25px 0; line-height: 1.5;">
+                <!-- Pesan Skor Terlewati Muncul Di Sini -->
+            </div>
+            <div class="modal-buttons">
+                <button class="btn-modal-close" onclick="closeSkippedModal()">OK, Lanjutkan</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         let scores = { 1: 0, 2: 0, 3: 0, 4: 0 };
         let historyStack = [];
         let currentWinner = null;
         let totalPlayers = 4;
         let currentScreen = 'welcome';
+
+        // --- FUNGSI FULLSCREEN ---
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    alert(`Gagal mengaktifkan mode Fullscreen: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
 
         // --- SISTEM AUTO-SAVE LOCALSTORAGE ---
         function saveGameState() {
@@ -911,6 +989,8 @@
                 setupScreen.style.display = 'none';
                 mainContent.classList.add('active');
             }, 500);
+
+            updateScoreDisplays();
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -927,6 +1007,10 @@
 
         function closeModal() {
             document.getElementById('winner-modal').style.display = 'none';
+        }
+
+        function closeSkippedModal() {
+            document.getElementById('skipped-score-modal').style.display = 'none';
         }
 
         function saveStateForUndo() {
@@ -979,17 +1063,58 @@
 
             saveStateForUndo();
 
+            // Catat skor lama & hitung perkiraan skor baru
+            const oldScores = { ...scores };
+            const newScores = { ...scores };
             for (const pId in changes) {
                 const playerNum = parseInt(pId);
-                const addVal = changes[playerNum];
-                
-                scores[playerNum] += addVal;
-                addPlayerHistory(playerNum, addVal, scores[playerNum]);
-                document.getElementById(`input-${playerNum}`).value = '';
+                newScores[playerNum] += changes[playerNum];
+            }
+
+            let skippedMessages = [];
+
+            // Cek kondisi menyalip skor lawan di atas 100 poin
+            for (const pId in changes) {
+                const playerNum = parseInt(pId);
+                const pOldScore = oldScores[playerNum];
+                const pNewScore = newScores[playerNum];
+                const playerName = document.getElementById(`name-${playerNum}`).value || `Pemain ${playerNum}`;
+
+                // Hanya cek jika skor pemain setelah ditambah berada DI ATAS 100
+                if (pNewScore > 100) {
+                    for (let opponentId = 1; opponentId <= totalPlayers; opponentId++) {
+                        if (opponentId === playerNum) continue;
+
+                        const oppOldScore = oldScores[opponentId];
+                        const oppName = document.getElementById(`name-${opponentId}`).value || `Pemain ${opponentId}`;
+
+                        // Kondisi menyalip: semula dibawah/sama, lalu melampaui skor lawan
+                        if (pOldScore <= oppOldScore && pNewScore > oppOldScore) {
+                            skippedMessages.push(
+                                `Pemain <strong>${playerName}</strong> (Skor: ${pNewScore}) telah menyalip/melewati skor <strong>${oppName}</strong> (Skor: ${oppOldScore})!`
+                            );
+                        }
+                    }
+                }
+            }
+
+            // Terapkan skor ke variabel utama
+            for (let i = 1; i <= totalPlayers; i++) {
+                scores[i] = newScores[i];
+                if (changes[i]) {
+                    addPlayerHistory(i, changes[i], scores[i]);
+                    document.getElementById(`input-${i}`).value = '';
+                }
             }
 
             updateScoreDisplays();
             saveGameState();
+
+            if (skippedMessages.length > 0) {
+                document.getElementById('skipped-score-message').innerHTML = skippedMessages.join('<br><br>');
+                document.getElementById('skipped-score-modal').style.display = 'flex';
+            }
+
             checkWinner();
         }
 
@@ -1042,6 +1167,14 @@
             }
         }
 
+        function subtractFifty(playerNum) {
+            saveStateForUndo();
+            scores[playerNum] -= 50;
+            addPlayerHistory(playerNum, -50, scores[playerNum]);
+            updateScoreDisplays();
+            saveGameState();
+        }
+
         function addPlayerHistory(playerNum, changeText, totalScore, isReset = false) {
             const historyUl = document.getElementById(`history-${playerNum}`);
             const li = document.createElement('li');
@@ -1073,6 +1206,21 @@
             for (let i = 1; i <= totalPlayers; i++) {
                 document.getElementById(`score-${i}`).innerText = scores[i];
             }
+
+            // Urutkan kartu pemain dari skor terbanyak ke terkecil
+            let playerList = [];
+            for (let i = 1; i <= totalPlayers; i++) {
+                playerList.push({ id: i, score: scores[i] });
+            }
+
+            playerList.sort((a, b) => b.score - a.score);
+
+            playerList.forEach((player, index) => {
+                const card = document.getElementById(`card-${player.id}`);
+                if (card) {
+                    card.style.order = index + 1;
+                }
+            });
         }
 
         function resetAllScores() {
