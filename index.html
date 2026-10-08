@@ -52,8 +52,8 @@
 
         <!-- Input Batas Akhir Nilai / Winning Score -->
         <div class="target-container">
-            <label for="target-score">🏆 Score Target:</label>
-            <input type="number" id="target-score" class="target-input" value="100" min="1" onchange="saveGameState()">
+            <label for="target-score">🏆 SCORE TARGET:</label>
+            <input type="number" id="target-score" class="target-input" value="1000" min="1" onchange="saveGameState()">
         </div>
 
         <div class="scoreboard-grid" id="scoreboard-grid">
@@ -181,7 +181,7 @@
     <div class="modal-overlay" id="skipped-score-modal">
         <div class="modal-box" style="border-color: #ff5252;">
             <div class="modal-title" style="color: #ff5252; font-size: 1.4rem;">
-                ⚠️ SKOR LAWAN TERLEWATI ⚠️
+                ⚠️ PERINGATAN PENTING ⚠️
             </div>
             <div class="modal-subtitle" id="skipped-score-message" style="color: #fff; font-size: 1.1rem; margin: 15px 0 25px 0; line-height: 1.5;">
                 <!-- Pesan Skor Terlewati Muncul Di Sini -->
@@ -447,7 +447,7 @@
                         const oppCurrentOrNewScore = newScores[opponentId];
                         if (oppOldScore >= 100 && pOldScore <= oppOldScore && pNewScore > oppCurrentOrNewScore) {
                             skippedMessages.push(
-                                `Pemain <strong>${playerName}</strong> (Skor: ${pNewScore}) telah menyalip/melewati skor <strong>${oppName}</strong> (Skor: ${oppOldScore})!`
+                                `SELAMAT karena <strong>${playerName}</strong> (Skor: ${pNewScore}) telah melewati skor <strong>${oppName}</strong> (Skor: ${oppOldScore})!`
                             );
                         }
                     }
