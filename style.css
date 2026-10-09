@@ -58,33 +58,55 @@ body {
                 url('background-greeting.jpg') center/cover no-repeat;
     z-index: 9999;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+.welcome-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 90%;
+    max-width: 320px;
 }
 
 .btn-start-game {
     background: linear-gradient(135deg, #00e676, #00b0ff);
     color: #000;
     border: none;
-    padding: 16px 45px;
-    font-size: 1.4rem;
+    padding: 16px 30px;
+    font-size: 1.2rem;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     border-radius: 50px;
     cursor: pointer;
     box-shadow: 0 0 25px rgba(0, 230, 118, 0.6);
     transition: all 0.3s ease;
     animation: pulse-glow 2s infinite;
-    position: absolute;
-    bottom: 120px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    display: block;
 }
 
 .btn-start-game:hover {
-    transform: scale(1.08);
+    transform: scale(1.05);
     box-shadow: 0 0 35px rgba(0, 230, 118, 0.9);
     background: linear-gradient(135deg, #00c853, #0091ea);
+}
+
+.btn-online-match {
+    background: linear-gradient(135deg, #ffd600, #ff6d00);
+    box-shadow: 0 0 25px rgba(255, 214, 0, 0.6);
+}
+
+.btn-online-match:hover {
+    background: linear-gradient(135deg, #ffab00, #ff3d00);
+    box-shadow: 0 0 35px rgba(255, 214, 0, 0.9);
 }
 
 @keyframes pulse-glow {
